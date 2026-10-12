@@ -1,0 +1,21 @@
+﻿@model IEnumerable<prectical_7.Models.Feedback>
+@{
+    ViewBag.Title = "index";
+}
+
+<h2>All Feedbacks</h2>
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+<p>
+    @Html.ActionLink("Create New Feedback", "Create", null, new { @class = "btn btn-success" })
+</p>
+<hr />
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        Html.RenderPartial("_FeedbackCard", item);
+    }
+}
